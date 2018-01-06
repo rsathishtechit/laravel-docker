@@ -24,3 +24,9 @@ Route::get('/testDatabase', function() {
 
     return response()->json(App\User::all());
 });
+
+Route::get('/test-cache', function() {
+    Cache::put('someKey', 'foobar', 10);
+
+    return Cache::get('someKey');
+});
