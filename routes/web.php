@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/testDatabase', function() {
+    App\User::create([
+        'email' => uniqid() . '@example.com',
+        'name' => 'Test User',
+        'password' => 'secret'
+    ]);
+
+    return response()->json(App\User::all());
+});
